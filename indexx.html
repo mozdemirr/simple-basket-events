@@ -1,0 +1,33 @@
+<html lang ="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+   
+</head>
+<body>
+
+    <div id ="app"> 
+        {{basket}}
+        <h2>ürünler</h2>
+        <div class="for-kullanimi" v-for="product in products" >
+            <p> {{ product.title }} - {{ product.number }}  </p>
+            <button v-if= "product.number > 0 " @click= "addtoBasket(product)" >sepete ekleyin</button>
+            <p v-if="product.number == 0">sold out</p>
+            
+        </div>
+         
+       <h2>sepet</h2>
+        <div class="for-kullanimi" v-for="(product, i) in basket" >
+            <p> {{ product.title }} - {{ product.number }}  </p>
+        <button @click= "removeFromBasket(product, i)" >sepetten kaldırın</button>
+        <p v-else>sepette ürün yok </p>
+        </div>
+        
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
